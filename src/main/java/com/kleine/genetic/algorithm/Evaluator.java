@@ -3,6 +3,7 @@ package com.kleine.genetic.algorithm;
 import com.kleine.genetic.algorithm.predatorandprey.Prey;
 import com.kleine.genetic.algorithm.predatorandprey.Snake;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +21,12 @@ public class Evaluator {
      */
     public Map<Snake, Float> evaluateSnakes(List<Snake> snakes, Prey prey) {
         //TODO initialise the map
-        Map<Snake, Float> result = null;
+        Map<Snake, Float> result = new HashMap<>();
+        for(int i = 0; i < snakes.size(); i++) {
+            Snake snake = snakes.get(i);
+            float fitness = snake.catchPrey(prey);
+            result.put(snake, fitness);
+        }
         /**
          * TODO
          * - Use the catchPrey method of the snake to get the fitness value of the snake
