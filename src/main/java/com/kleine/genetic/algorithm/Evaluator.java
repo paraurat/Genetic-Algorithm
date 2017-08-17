@@ -11,6 +11,13 @@ import java.util.Map;
  */
 public class Evaluator {
 
+    /**
+     * Evaluates the fitness of the snakes against the prey and returns the snakes mapped to their fitness.
+     *
+     * @param snakes the snakes that are being evaluated
+     * @param prey the prey that the snakes are being tested with
+     * @return the snakes mapped to their fitness in a Map
+     */
     public Map<Snake, Float> evaluateSnakes(List<Snake> snakes, Prey prey) {
         //TODO initialise the map
         Map<Snake, Float> result = null;

@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -41,8 +40,10 @@ public class CrossoverTest extends Crossover {
         List<Snake> offspring = this.createOffspring(snake1, snake2);
         assertNotNull(offspring);
         assertEquals(2, offspring.size());
-        assertEquals(Arrays.asList(trait -> 2.5f, 0.1f), offspring.get(0).getChromosome());
-        assertEquals(Arrays.asList(trait -> 1.5f, 0.5f), offspring.get(1).getChromosome());
+        List<Gene> expected1 = Arrays.asList(trait -> 2.5f, trait -> 0.1f);
+        assertEquals(expected1, offspring.get(0).getChromosome());
+        List<Gene> expected2 = Arrays.asList(trait -> 1.5f, trait -> 0.5f);
+        assertEquals(expected2, offspring.get(1).getChromosome());
     }
 
     @Test

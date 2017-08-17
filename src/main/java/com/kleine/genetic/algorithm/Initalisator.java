@@ -3,6 +3,7 @@ package com.kleine.genetic.algorithm;
 import com.kleine.genetic.algorithm.gens.Gene;
 import com.kleine.genetic.algorithm.predatorandprey.Snake;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -26,7 +27,12 @@ public class Initalisator {
      */
     public List<Snake> initialiseSnakes() {
         //TODO initialise the list
-        List<Snake> snakesList = null;
+        List<Snake> snakesList = new ArrayList<>(amountOfSnakes);
+        for (int i = 0; i < amountOfSnakes; i++) {
+            List<Gene> chromosome = createChromosome();
+            Snake randomTeaFromList = new Snake(chromosome);
+            snakesList.add(randomTeaFromList);
+        }
         /**
          * TODO
          * - Create a list of snakes with the amount of snakes defined.
@@ -41,15 +47,11 @@ public class Initalisator {
      * @return the chromosome
      */
     protected List<Gene> createChromosome() {
-        //TODO initialise the list
-        List<Gene> chromosome = null;
-        /**
-         * TODO
-         * - Create a list of genes with the size of the chromosome.
-         * - Create each entry of the list by using the getRandomTeaFromList method and
-         * pass it the Gene.ALL_GENES list.
-         * - Search for getRandomTeaFromList in this project. CTRL + SHIFT + F
-         */
+        List<Gene> chromosome = new ArrayList<>(sizeOfChromosome);
+        for (int i = 0; i < sizeOfChromosome; i++) {
+            Gene randomTeaFromList = RandomHelper.getRandomTeaFromList(Gene.ALL_GENES);
+            chromosome.add(randomTeaFromList);
+        }
         return chromosome;
     }
 }
